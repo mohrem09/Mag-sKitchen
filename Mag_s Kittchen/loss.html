@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>Mag's Kitchen</title>
+<link rel="stylesheet" href="loss.css">
+<link rel="icon" type="image/x-icon" href="logo.png">
+
+<video autoplay muted loop id="myVideo">
+    <source src="myvideo4.mp4" type="video/mp4">
+  </video>
+
+<div class="topnav">
+    <a class="active" href="home.html">Acceuil</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">A propos de</a>
+
+  </div>
+  <br>
+<h2>Plateforme aux individus qui sont
+  intéresser par avoir une vie saine et un régime alimentaire équilibré</h2>
+  <button id="voirpanier" style="position: absolute; left: 635; top: 130;" >Voir le panier</button>
+
+  <div id="box1"    >
+    <ul  id="demo4">
+        <label for="quantity">Box01:</label>
+        <img src="foodboxes/box6.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+
+        <p>100$</p>
+        <button id="addbox1topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity1" name="quantity" min="1" max="10" value="1"><br>
+       
+
+      </ul>
+    
+  </div>
+
+  <div id="box2" >
+
+    <ul  id="demo4">
+            <label for="quantity">Box02:</label>
+                <img src="foodboxes/box4.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+        <p>100$</p>
+        <button id="addbox2topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity2" name="quantity" min="1" max="10" value="1"><br>
+      </ul>
+
+  </div>
+
+
+  <div id="box3" >
+
+    <ul  id="demo4">
+            <label for="quantity">Box03:</label>
+                <img src="foodboxes/box1.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+        <p>100$</p>
+        <button id="addbox3topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity3" name="quantity" min="1" max="10" value="1"><br>
+      </ul>
+
+  </div>
+
+  </div>
+  <div id="box4" >
+
+    <ul  id="demo4">
+            <label for="quantity">Box04:</label>
+                <img src="foodboxes/box2.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+        <p>100$</p>
+        <button id="addbox4topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity4" name="quantity" min="1" max="10" value="1"><br>
+      </ul>
+
+  </div>
+  <div id="box5" >
+
+    <ul  id="demo4">
+            <label for="quantity">Box05:</label>
+                <img src="foodboxes/box5.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+        <p>100$</p>
+        <button id="addbox5topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity5" name="quantity" min="1" max="10" value="1"><br>
+      </ul>
+
+  </div>
+  <div id="box6" >
+
+    <ul  id="demo4">
+            <label for="quantity">Box06:</label>
+                <img src="foodboxes/box4.jpg" alt="logo" width="85" height="70" style="position: absolute; top: 40px; left: 100px;">
+        <p>100$</p>
+        <button id="addbox6topanel" >Ajouter au panier</button>
+
+        <input type="number" id="quantity6" name="quantity" min="1" max="10" value="1"><br>
+      </ul>
+
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+        import { getDatabase, set, ref, update,  onValue } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut , sendSignInLinkToEmail} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+      
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyB8ctHBNXVdNVkyE8VJu7YZwrudCgk_bNc",
+  authDomain: "mag-s-kitchen.firebaseapp.com",
+  projectId: "mag-s-kitchen",
+  storageBucket: "mag-s-kitchen.appspot.com",
+  messagingSenderId: "516034003523",
+  appId: "1:516034003523:web:43aa46a8fbb5425dd34af6"
+};
+
+
+
+  const macommande = "";
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+
+//initialise my buttons
+  let btnbox1 = document.getElementById('addbox1topanel');
+  let btnbox2 = document.getElementById('addbox2topanel');
+  let btnbox3 = document.getElementById('addbox3topanel');
+  let btnbox4 = document.getElementById('addbox4topanel');
+  let btnbox5 = document.getElementById('addbox5topanel');
+  let btnbox6 = document.getElementById('addbox6topanel');
+
+// existance of my box on the bag
+  let isbox1in = false;
+  let isbox2in = false;
+  let isbox3in = false;
+  let isbox4in = false;
+  let isbox5in = false;
+  let isbox6in = false;
+
+
+//adding to bag évent
+  btnbox1.addEventListener("click", addbox1topanel);
+  btnbox2.addEventListener("click", addbox2topanel);
+  btnbox3.addEventListener("click", addbox3topanel);
+  btnbox4.addEventListener("click", addbox4topanel);
+  btnbox5.addEventListener("click", addbox5topanel);
+  btnbox6.addEventListener("click", addbox6topanel);
+
+
+
+// start counting from 1 
+let  qtbox1 = 0;
+let  qtbox2 = 0;
+let  qtbox3 = 0;
+let  qtbox4 = 0;
+let  qtbox5 = 0;
+let  qtbox6 = 0;
+
+
+
+
+
+
+
+ // document.getElementById('quantity1').value;
+
+ // adding to bag function
+  function addbox1topanel($isbox1in,$qtbox1){
+    isbox1in = true;
+    qtbox1 = document.getElementById('quantity1').value;
+    alert('box ajouter');
+    return isbox1in,qtbox1;
+
+
+
+  }
+
+  function addbox2topanel($isbox2in,$qtbox2){
+    isbox2in = true;
+    qtbox2 = document.getElementById('quantity2').value;
+    alert('box ajouter');
+
+    return isbox2in,qtbox2;
+
+
+  }
+  function addbox3topanel($isbox3in,$qtbox3){
+    isbox3in = true;
+    qtbox3 = document.getElementById('quantity3').value;
+    alert('box ajouter');
+
+    console.log(isbox3in,qtbox3);
+    return isbox3in,qtbox3;
+
+  }
+  function addbox4topanel($isbox4in,$qtbox4){
+    isbox4in = true;
+    qtbox4 = document.getElementById('quantity4').value;
+    alert('box ajouter');
+
+    return isbox4in,qtbox4;
+
+
+  }
+  function addbox5topanel($isbox5in,$qtbox5){
+    isbox5in = true;
+    qtbox5 = document.getElementById('quantity5').value;
+    return isbox5in,qtbox5;
+    alert('box ajouter');
+
+
+  }
+  function addbox6topanel($isbox6in,$qtbox6){
+    isbox6in = true;
+    qtbox6 = document.getElementById('quantity6').value;
+    return isbox6in,qtbox6;
+
+    alert('box ajouter');
+
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  voirpanier.addEventListener('click',(e) => {
+
+    console.log(isbox1in,qtbox1);
+    console.log(isbox2in,qtbox2);
+    console.log(isbox3in,qtbox3);
+    console.log(isbox4in,qtbox4);
+    console.log(isbox5in,qtbox5);
+    console.log(isbox6in,qtbox6);
+
+
+
+
+
+
+
+
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+    
+     
+
+    
+    var quantity = document.getElementById("quantity1").value;
+    
+    set(ref(database, 'users/' + uid + '/losspanier'), {
+    
+          box1: isbox1in,
+          box2:isbox2in,
+          box3:isbox3in,
+          box4:isbox4in,
+          box5:isbox5in,
+          box6:isbox6in,
+
+          qtbox1:qtbox1,
+          qtbox2:qtbox2,
+          qtbox3:qtbox3,
+          qtbox4:qtbox4,
+          qtbox5:qtbox5,
+          qtbox6:qtbox6,
+
+ 
+     });
+     alert('done');
+     window.location.href = "monpanier.html";
+
+
+
+    
+    
+    } else {
+      window.location.href = "login.html";
+
+   }
+   });
+ });
+
+</script>

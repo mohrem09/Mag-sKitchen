@@ -1,0 +1,218 @@
+<html>
+<head>
+<title>Mag's Kitchen</title>
+<link rel="stylesheet" href="monpanier.css">
+<link rel="icon" type="image/x-icon" href="logo.png">
+
+<video autoplay muted loop id="myVideo">
+    <source src="myvideo5.mp4" type="video/mp4">
+  </video>
+  <div class="topnav">
+    <a  href="home.html">Acceuil</a>
+    <a href="#contact">Contact</a>
+    <a class="active" href="#about">Mon panier</a>
+
+
+    
+
+    <div id="box1" >
+
+             
+    
+      </div>
+      
+    <div id="box2" >
+     
+    <h1>Ma Commande:</h1>
+    <h3 id="tab" style="text-align: center; position: absolute; top: 60; left: 260;">BOX -----------||----- QUANTITY</h3>
+
+    <h2 id="cmd">......</h2>
+    <h3 style="position: absolute; bottom: 20; right:350;">TOTAL : </h3>    <h3 id="total" style="position: absolute; bottom: 20; right:290;">....</h3>
+    <h1 style="position: absolute; bottom: 70; display: none;">Livraison:</h1>
+
+    <input type="checkbox" id="scales" name="scales" checked style="display: none;">
+
+    </div>
+
+
+
+    <button id="lancer" >lancer commande</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+    import { getDatabase, set, ref, update,  onValue } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut , sendSignInLinkToEmail} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+  
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyB8ctHBNXVdNVkyE8VJu7YZwrudCgk_bNc",
+  authDomain: "mag-s-kitchen.firebaseapp.com",
+  projectId: "mag-s-kitchen",
+  storageBucket: "mag-s-kitchen.appspot.com",
+  messagingSenderId: "516034003523",
+  appId: "1:516034003523:web:43aa46a8fbb5425dd34af6"
+};
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+  var test;
+  let total=0;
+  let macommande = '';
+  let lancerCombtn = document.getElementById('lancer');
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+
+   
+    const starCountRef = ref(database, 'users/' + uid + '/gainpanier');
+      onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val(); // data = all data on firebse
+      if (data.box1){ 
+      total = total + 100*data.qtbox1;
+      console.log( 'total avec box 1 ' + total);
+      macommande =  macommande + ' <br> box 1 | ' + (data.qtbox1).toString(10) ;
+      console.log( 'ma commande ' + macommande);
+
+      }
+       if(data.box2){
+        total = total + 100*data.qtbox2;
+        console.log( 'total avec box 1 et 2 ' + total);
+        macommande =  macommande + ' <br> box 2 | ' + (data.qtbox2).toString(10) ; ;
+        console.log( 'ma commande ' + macommande);
+
+      }
+
+      if(data.box3){
+        total = total + 100*data.qtbox3;
+        console.log( 'total avec box 1 et 2 et 3 '  + total);
+        macommande =  macommande + ' <br> box 3 | ' + (data.qtbox3).toString(10) ;
+        console.log( 'ma commande ' + macommande);
+
+      }
+      if(data.box4){
+        total = total + 100*data.qtbox4;
+        console.log( 'total avec box 1 et 2 et 3 et 4 '  + total);
+        macommande =  macommande + ' <br> box 4 | ' + (data.qtbox4).toString(10) ;
+        console.log( 'ma commande ' + macommande);
+
+      }
+      if(data.box5){
+        total = total + 100*data.qtbox5;
+        console.log( 'total avec box 1 et 2 et 3 et 4 et 5 '  + total);
+        macommande =  macommande + ' <br> box 5 | ' + (data.qtbox5).toString(10) ;
+        console.log( 'ma commande ' + macommande);
+
+      }
+      if(data.box6){
+        total = total + 100*data.qtbox6;
+        console.log( 'total avec box 1 et 2 et 3 et 4 et 5 et 6 '  + total);
+        macommande =  macommande + ' <br> box 6 | ' + (data.qtbox6).toString(10) ;
+        console.log( 'ma commande ' + macommande);
+
+      }
+    document.getElementById('total').innerText
+    document.getElementById("total").innerHTML = ' ' + total.toString(10) + 'DA';
+    document.getElementById("cmd").innerHTML = macommande.toString(10);
+
+     // console.log(test);
+    });
+
+
+
+    lancerCombtn.addEventListener('click',(e) => {
+
+set(ref(database, 'users/' + uid + '/commande'), {
+
+  macommande:macommande.toString(10)
+
+
+});
+set(ref(database, 'users/' + uid + '/losspanier'), {
+    
+    box1: false,
+    box2:false,
+    box3:false,
+    box4:false,
+    box5:false,
+    box6:false,
+
+    qtbox1:0,
+    qtbox2:0,
+    qtbox3:0,
+    qtbox4:0,
+    qtbox5:0,
+    qtbox6:0,
+
+
+});
+set(ref(database, 'users/' + uid + '/gainpanier'), {
+    
+    box1: false,
+    box2:false,
+    box3:false,
+    box4:false,
+    box5:false,
+    box6:false,
+
+    qtbox1:0,
+    qtbox2:0,
+    qtbox3:0,
+    qtbox4:0,
+    qtbox5:0,
+    qtbox6:0,
+
+
+});
+alert('done');
+
+});
+
+
+
+  } else {
+    // User is signed out
+    // ...
+    //bla bla bla
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+</html>

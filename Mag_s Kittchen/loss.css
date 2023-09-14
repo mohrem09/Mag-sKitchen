@@ -1,0 +1,322 @@
+/* Add a black background color to the top navigation */
+.topnav {
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: rgb(185, 203, 200);
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #aa0433;
+    color: white;
+  }
+  #myVideo {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+
+  
+
+    #login-box-loss {
+        position: absolute;
+     top:250;
+      width: 300px;
+      height: 220px;
+      left: 250;
+      background: rgba(0, 0, 0, 0.5);
+      background:#ececec;
+      border-radius: 2px;
+      border-radius: 5%;
+      background-image: url("WeightlossJPG.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      
+    }
+    #login-box-gain {
+      position: absolute;
+      top:250;
+      left:600;
+      width: 300px;
+      height: 220px;
+      background: rgba(0, 0, 0, 0.5);
+      background:#ececec;
+      border-radius: 2px;
+      border-radius: 5%;
+      background-image: url("gain.jpg");
+            background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+    
+    #login-box-service {
+        position: absolute;
+        top:250;
+        left:950;
+        width: 300px;
+        height: 220px;
+        background: rgba(0, 0, 0, 0.5);
+        background:#ececec;
+        border-radius: 2px;
+        border-radius: 5%;
+        background-image: url("test.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    .left {
+    
+      position: absolute;
+      top: 0;
+      box-sizing: border-box;
+      padding: 40px;
+      width: 300  px;
+      height: 200px;
+    }
+    
+
+
+
+    .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      box-sizing: border-box;
+      padding: 40px;
+      width: 300px;
+      height: 450px;
+      background: url('https://goo.gl/YbktSj');
+      background-size: cover;
+      background-position: center;
+      border-radius: 0 2px 2px 0;
+    }
+       
+    
+    h1 { color: rgb(255, 255, 255);  font-family: 'Helvetica Neue', sans-serif; font-size: 150px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+
+    h2 { color: rgb(255, 255, 255); font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; }
+    
+    
+    p { color: #000000;  font-family: "Open Sans", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; position:relative;  background-color: #ffffff75;    
+    }
+       
+    
+    
+    #mybox {
+          position: relative;
+          margin: 3% auto;
+          width: 300px;
+          height: 220px;
+          background: rgba(0, 0, 0, 0.5);
+          background:#ffffff;
+          border-radius: 2px;
+          border-radius: 5%;
+          background-image: url("logo.png");
+        }
+
+
+
+.container {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.container div > p span {
+  color: red;
+}
+
+button {
+  position: absolute;
+  top: 120;
+  left: 50;
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  height: 30px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
+}
+
+.reg {
+  color: rgba(255, 255, 255, 0.586);
+  background-color:  #aa0433;
+}
+
+.log {
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 0.586);
+  border: 1px solid  #aa0433;
+}
+
+button:hover {
+  color: white;
+  box-shadow: 0 0 20px  #aa0433;
+  background-color:  #aa0433;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    list-style-type: none;
+  }
+  ul li {
+    padding: 6px 0;
+  }
+  ul li a {
+    position: relative;
+    display: block;
+    padding: 6px 0;
+    font-family: Lato, sans-serif;
+    color: #000101;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-color: #ffffff75;    
+  }
+  ul li a::after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #3498db;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+  }
+  ul li a:hover {
+    color: #95a5a6;
+  }
+  ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  #box1 {
+    position: absolute;
+    top:200;
+    left:250;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+ 
+  }
+  #box2 {
+    position: absolute;
+    top:200;
+    left:600;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+
+
+ 
+  }
+  #box3 {
+    position: absolute;
+    top:200;
+    left:950;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+
+
+  }
+  #box4 {
+    position: absolute;
+    top:450;
+    left:250;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+
+
+ 
+  }
+  #box5 {
+    position: absolute;
+    top:450;
+    left:600;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+
+ 
+  }
+  #box6{
+    position: absolute;
+    top:450;
+    left:950;
+    width: 300px;
+    height: 220px;
+    background: rgba(0, 0, 0, 0.5);
+    background:#a089899c;
+    border-radius: 2px;
+    border-radius: 5%;
+
+
+  }
+
+  input[type="number"]
+   {
+    position: absolute;
+    top: 160;
+    left: 130;
+    width: 40;
+    opacity: 0.8;
+    box-shadow: 0 2px 4px  rgba(255, 255, 255, 0.586);
+    transition: 0.1s ease;
+    background-color: rgba(255, 255, 255, 0.586);
+  }
+  input[type="number"]:hover,
+input[type="number"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px  rgba(255, 255, 255, 0.586);
+  transition: 0.1s ease;
+  background-color: rgba(255, 255, 255, 0.586);
+}
+
